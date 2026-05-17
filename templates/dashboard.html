@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📊 AI Sentiment Dashboard</h1>
+
+    <h3>Positive: {{ positive }}</h3>
+    <h3>Negative: {{ negative }}</h3>
+
+    <div style="width: 400px; margin: auto;">
+        <canvas id="sentimentChart"></canvas>
+    </div>
+
+    <hr>
+
+    <h2>History</h2>
+
+    {% for row in data %}
+        <div style="background:#1f2937; padding:10px; margin-top:10px; border-radius:10px;">
+            <p><b>Text:</b> {{ row[1] }}</p>
+            <p><b>Sentiment:</b> {{ row[2] }}</p>
+            <p><b>Score:</b> {{ row[3] }}</p>
+        </div>
+    {% endfor %}
+
+    <br>
+
+    <a href="/">⬅ Back to Analyzer</a>
+
+</div>
+
+<script>
+    const positive = Number("{{ positive }}");
+    const negative = Number("{{ negative }}");
+
+    const ctx = document.getElementById('sentimentChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Positive', 'Negative'],
+            datasets: [{
+                data: [positive, negative],
+                backgroundColor: [
+                    '#22c55e',
+                    '#ef4444'
+                ]
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+flask
+transformers
+torch
+flask-login
+flask-bcrypt
+gunicorn

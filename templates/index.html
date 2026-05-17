@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Sentiment Analyzer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🤖 AI Sentiment Analyzer</h1>
+
+    <form method="POST" action="/predict">
+        <textarea name="text" placeholder="Type something..." required></textarea>
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if prediction %}
+        <h2>{{prediction}}</h2>
+        <p>Score: {{score}}</p>
+    {% endif %}
+
+    <a href="/dashboard">Go to Dashboard</a> |
+    <a href="/logout">Logout</a>
+</div>
+
+</body>
+</html>
