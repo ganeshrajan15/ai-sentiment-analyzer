@@ -27,8 +27,6 @@ An AI-powered Sentiment Analysis Web App built using Flask, Transformers, and SQ
 
 ---
 
-## 📸 Screenshots
-
 ### Login Page
 - Modern authentication UI
 
