@@ -59,13 +59,15 @@ def load_user(user_id):
 # =========================
 # AI MODEL
 # =========================
-
 sentiment_model = pipeline(
     "sentiment-analysis",
-    model="cardiffnlp/twitter-roberta-base-sentiment-latest"
+    model="distilbert/distilbert-base-uncased-finetuned-sst-2-english"
 )
 
 
+# =========================
+# SENTIMENT FUNCTION
+# =========================
 def analyze(text):
 
     result = sentiment_model(text)[0]
@@ -75,6 +77,7 @@ def analyze(text):
 
     if label == "POSITIVE":
         sentiment = "Positive 😃"
+
     else:
         sentiment = "Negative 😡"
 
@@ -140,14 +143,13 @@ def fetch_all():
     return data
 
 
-# initialize db
+# initialize database
 init_db()
 
 
 # =========================
-# ROUTES
+# HOME
 # =========================
-
 @app.route("/")
 def home():
 
@@ -257,7 +259,7 @@ def predict():
     return render_template(
         "index.html",
         prediction=sentiment,
-        score=round(score, 2),
+        score=round(score, 4),
         input_text=text
     )
 
