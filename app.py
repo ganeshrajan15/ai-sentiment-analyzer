@@ -59,9 +59,10 @@ def load_user(user_id):
 # =========================
 # AI MODEL
 # =========================
+
 sentiment_model = pipeline(
     "sentiment-analysis",
-    model="distilbert/distilbert-base-uncased-finetuned-sst-2-english"
+    model="sshleifer/tiny-distilbert-base-uncased-finetuned-sst-2-english"
 )
 
 
