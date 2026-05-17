@@ -62,7 +62,7 @@ def load_user(user_id):
 
 sentiment_model = pipeline(
     "sentiment-analysis",
-    model="sshleifer/tiny-distilbert-base-uncased-finetuned-sst-2-english"
+    model="cardiffnlp/twitter-roberta-base-sentiment-latest"
 )
 
 
